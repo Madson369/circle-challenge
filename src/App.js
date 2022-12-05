@@ -1,4 +1,4 @@
-import { useState, useReducer } from "react";
+import { useState } from "react";
 import "./App.css";
 import { Circle } from "./components/Circle.jsx";
 
@@ -34,10 +34,6 @@ function App() {
       setCircles(copyArray);
     }
   };
-
-  // setInterval(() => {
-  //   setHeightDiff(heightDiff + 10);
-  // }, 500);
 
   return (
     <div

@@ -17,15 +17,20 @@ function App() {
     );
 
     setCircles([...circles, newCircle]);
+    setCopyCircles([...circles, newCircle]);
   };
 
   const handleUndo = () => {
-    console.log(circles.length);
     if (circles.length > 0) {
       let copyArray = [...circles];
-      console.log("before", copyArray);
       copyArray.pop();
-      console.log("after", copyArray);
+      setCircles(copyArray);
+    }
+  };
+
+  const handleRedo = () => {
+    if (copyCircles[circles.length]) {
+      let copyArray = [...circles, copyCircles[circles.length]];
       setCircles(copyArray);
     }
   };
@@ -63,9 +68,16 @@ function App() {
           className="button"
           style={{ marginRight: "10px" }}
         >
-          AAA
+          {"<"}
         </button>
-        <button className="button">BBB</button>
+        <button
+          onClick={() => {
+            handleRedo();
+          }}
+          className="button"
+        >
+          {">"}
+        </button>
       </div>
       {circles}
     </div>
